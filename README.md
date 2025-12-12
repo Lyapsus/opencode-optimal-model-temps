@@ -1,6 +1,6 @@
 # opencode-optimal-model-temps
 
-Minimal OpenCode plugin that hooks `chat.params` and nudges specific models to their preferred sampling temperature. Right now it only pinches Google Gemini 3 Pro to **0.35**, following the recommendation in [Optimal Temperature for Gemini 3 Pro](https://lynchmark.com/blog/gemini-optimal-temperature).
+Minimal OpenCode plugin that hooks `chat.params` and nudges specific models to their preferred sampling temperature. Right now it only pinches Google Gemini 3 Pro to **0.35**, following the recommendation in [Optimal Temperature for Gemini 3 Pro](https://lynchmark.com/blog/gemini-optimal-temperature). Published on npm as [`opencode-optimal-model-temps`](https://www.npmjs.com/package/opencode-optimal-model-temps).
 
 ## Usage
 
