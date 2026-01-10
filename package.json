@@ -1,6 +1,6 @@
 {
   "name": "opencode-optimal-model-temps",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "module": "src/index.ts",
   "license": "MIT"
