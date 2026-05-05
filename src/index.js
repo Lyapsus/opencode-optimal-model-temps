@@ -1,13 +1,6 @@
 const TEMPERATURE_EPSILON = 1e-3
 
-type TemperatureRule = {
-  provider: string
-  match: RegExp
-  target: number
-  baseline?: number
-}
-
-const TEMPERATURE_RULES: TemperatureRule[] = [
+const TEMPERATURE_RULES = [
   {
     provider: "google",
     match: /gemini-3-pro/,
@@ -16,7 +9,7 @@ const TEMPERATURE_RULES: TemperatureRule[] = [
   },
 ]
 
-function findRule(model: any): TemperatureRule | undefined {
+function findRule(model) {
   const provider = (model?.providerID ?? "").toLowerCase()
   const modelId = (model?.modelID ?? model?.api?.id ?? "").toLowerCase()
 
@@ -26,7 +19,7 @@ function findRule(model: any): TemperatureRule | undefined {
   })
 }
 
-function isDefaultTemperature(current: number | undefined, baseline?: number) {
+function isDefaultTemperature(current, baseline) {
   if (baseline === undefined || !Number.isFinite(baseline)) {
     return current === undefined
   }
@@ -35,7 +28,7 @@ function isDefaultTemperature(current: number | undefined, baseline?: number) {
 }
 
 export const OptimalModelTemperaturesPlugin = async () => ({
-  "chat.params": async ({ model }: { model: any }, output: { temperature?: number }) => {
+  "chat.params": async ({ model }, output) => {
     const rule = findRule(model)
     if (!rule || !Number.isFinite(rule.target)) return
     if (!isDefaultTemperature(output.temperature, rule.baseline)) return
